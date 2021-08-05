@@ -7,7 +7,7 @@ namespace MagicEightBall.Models
     {
         //private static Random wordPicker = new Random();
         //private string _answer { get; set; }
-        public string Answer { get; set; }
+        public string Answer { get; }
         private static int _roundCap = 6;
         public int RoundCap { get; }
         private bool BeenInitialized { get; set; } = false;
@@ -56,7 +56,7 @@ namespace MagicEightBall.Models
                 HangManData.Add(input, newHangman);
             }
 
-            else if (Answer.Contains(Input) != true)
+            else
             {
                 DecreaseRoundCap();
             }

@@ -10,30 +10,31 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MagicEightBall.Controllers
 {
+    
     public class HangmanController : Controller
     {
+        public Hangman HangmanGameInstance { get; set; }
         // GET: /<controller>/
         public IActionResult Index()
         {
             return View();
-
-
         }
 
         public IActionResult HangmanInitialize()
         {
-            Hangman newHangman = new Hangman();
-            return View(newHangman);
+
+            this.HangmanGameInstance = new Hangman();
+            return View();
         }
 
-        public IActionResult Hangman(string Input, Hangman newHangman)
+        public IActionResult Hangman(string Input)
         {
 
             if (Input != null)
             {
-                newHangman.CheckInput(Input, newHangman);    
+                this.HangmanGameInstance.CheckInput(Input, this.HangmanGameInstance);    
 
-                if (newHangman.RoundCap == 0)
+                if (this.HangmanGameInstance.RoundCap == 0)
                 {
                     return View("~/Views/Hangman/LoseView.cshtml", HangManData.emptySpaces);
                 }
@@ -46,7 +47,7 @@ namespace MagicEightBall.Controllers
             }
             
             //HangManData.SetEmptySpaces(newHangman);
-            ViewBag.roundCap = newHangman.RoundCap;
+            ViewBag.roundCap = this.HangmanGameInstance.RoundCap;
             return View(HangManData.emptySpaces);
             }
 
