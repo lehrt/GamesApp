@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    List<string> imagesString = new List<string>
+{
+            "~/images/it-is-certain.jpg",
+            "~/images/as-i-see-it-yes.jpg",
+            "~/images/reply-hazy-try-again.jpg",
+            "~/images/it-is-decidedly-so.jpg",
+            "~/images/most-likely.jpg",
+            "~/images/ask-again-later.jpg",
+            "~/images/outlook-good.jpg",
+            "~/images/better-not-tell-you-now.jpg",
+            "~/images/yes-definitely.jpg",
+            "~/images/yes.jpg",
+            "~/images/cannot-predict-now.jpg",
+            "~/images/you-may-rely-on-it.jpg",
+            "~/images/signs-point-to-yes.jpg",
+            "~/images/concentrate-and-ask-again.jpg",
+            "~/images/dont-count-on-it.jpg",
+            "~/images/my-reply-is-no.jpg",
+            "~/images/outlook-not-so-good.jpg",
+            "~/images/very-doubtful.jpg"
+    };
+}
+
+<link rel="stylesheet" href="~/css/EightBall.css" />
+
+<div class="container">
+    <img src="~/images/eightball/magic8ballback.jpg" alt='@ViewBag.thisAnswer' width='450' height='450'>
+
+    <div class="centered">
+        <p>@ViewBag.thisAnswer</p>
+    </div>
+
+</div>
+<br /> 
+<div style="color:black">
+    <p><em>@ViewBag.yourQuestion</em></p>
+</div>
+<form action="/MagicEightBall/Index">
+    @*//use <a> tag*@
+    <button>Ask again</button>
+</form>

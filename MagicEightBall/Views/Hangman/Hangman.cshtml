@@ -1,0 +1,94 @@
+﻿@model List<char>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    @*List<string> deadMan = new List<string>
+            {
+                        { "     ╔═════╗
+                                O     ║
+                               /│\    ║
+                               / \\   ║" },
+                        { "     ╔═════╗\n     O     ║\n    /│\\    ║\n    /      ║" },
+                        { "     ╔═════╗\n     O     ║\n    /│\\    ║\n           ║" },
+                        { "     ╔═════╗\n     O     ║\n    /│     ║\n           ║" },
+                        { "     ╔═════╗\n     O     ║\n     │     ║\n           ║" },
+                        { "     ╔═════╗\n     O     ║\n           ║\n           ║" },
+                        { "     ╔═════╗\n           ║\n           ║\n           ║" },
+
+                    };
+        }
+        @List<string[]> deadMan = new List<string[]>
+                {
+                    @{ "     ╔═════╗",
+                       "     O     ║",
+                       "    /│\\    ║",
+                       "    / \\    ║",
+                    },
+                { "     ╔═════╗\n     O     ║\n    /│\\    ║\n    /      ║" },
+                { "     ╔═════╗\n     O     ║\n    /│\\    ║\n           ║" },
+                { "     ╔═════╗\n     O     ║\n    /│     ║\n           ║" },
+                { "     ╔═════╗\n     O     ║\n     │     ║\n           ║" },
+                { "     ╔═════╗\n     O     ║\n           ║\n           ║" },
+                { "     ╔═════╗\n           ║\n           ║\n           ║" },
+
+                };*@
+
+    //@deadMan[ViewBag.roundCap]
+    //int RoundCap = 6;
+
+}
+
+@if (@ViewBag.roundCap == 6)
+{
+    <partial name="/Views/Shared/_HangmanStart.cshtml" />
+}
+
+@if (@ViewBag.roundCap == 5)
+{
+    <partial name="/Views/Shared/_HangmanHead.cshtml" />
+}
+
+@if (@ViewBag.roundCap == 4)
+{
+    <partial name="/Views/Shared/_HangmanBody.cshtml" />
+}
+
+@if (@ViewBag.roundCap == 3)
+{
+    <partial name="/Views/Shared/_HangmanOneArm.cshtml" />
+}
+
+@if (@ViewBag.roundCap == 2)
+{
+    <partial name="/Views/Shared/_HangmanBothArms.cshtml" />
+}
+
+@if (@ViewBag.roundCap == 1)
+{
+    <partial name="/Views/Shared/_HangmanOneLeg.cshtml" />
+}
+
+
+<link rel="stylesheet" href="~/css/Hangman.css" />
+
+
+<div style="text-align:center">
+    <p>You have @ViewBag.roundCap incorrect guesses remaining.</p>
+    <p>
+        @foreach (char i in Model)
+        {
+            <span>@i</span>
+        }
+
+    </p>
+
+</div>
+
+<form style="text-align:center" asp-controller="Hangman" asp-action="Hangman">
+    <label>Guess a letter!</label>
+    <br />
+    <input type="text" name="Input" />
+
+</form>

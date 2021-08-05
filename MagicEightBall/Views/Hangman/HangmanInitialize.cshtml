@@ -1,0 +1,31 @@
+﻿@using MagicEightBall.Controllers;
+@using MagicEightBall.Data;
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+<partial name="/Views/Shared/_HangmanStart.cshtml" />
+<link rel="stylesheet" href="~/css/Hangman.css" />
+
+
+<div class="centeredHangman"
+    <p>You have 6 incorrect guesses remaining.</p>
+
+    <p>
+        @foreach (char i in HangManData.emptySpaces)
+        {
+            <span>@i</span>
+        }
+    </p>
+</div>
+<form style="text-align:center" asp-controller="Hangman" asp-action="Hangman">
+    <label>Guess a letter!</label>
+    <br />
+    <input type="text" name="Input" />
+
+</form>
+

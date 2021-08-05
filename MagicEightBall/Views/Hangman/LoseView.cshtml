@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<char>
+    <link rel="stylesheet" href="~/css/Hangman.css" />
+
+    <partial name="/Views/Shared/_HangmanBothLegs.cshtml" />
+
+
+    <div class="centeredHangman">
+        <br />
+        @foreach (char i in Model)
+        {
+            @*if (i == ' ')
+                {
+                    <span>_</span>
+                }*@
+            <span>@i</span>
+        }
+
+        <form asp-controller="Hangman" asp-action="HangmanInitialize">
+            <h1>YOU LOST! Because of you, an innocent man has died.</h1>
+            <input type="submit" value="Play again?" />
+        </form>
+    </div>

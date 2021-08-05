@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<char>
+<link rel="stylesheet" href="~/css/Hangman.css" />
+
+@if (@ViewBag.roundCap == 6)
+{
+    <partial name="/Views/Shared/_HangmanStart.cshtml" />
+}
+
+@if (@ViewBag.roundCap == 5)
+{
+    <partial name="/Views/Shared/_HangmanHead.cshtml" />
+}
+
+@if (@ViewBag.roundCap == 4)
+{
+    <partial name="/Views/Shared/_HangmanBody.cshtml" />
+}
+
+@if (@ViewBag.roundCap == 3)
+{
+    <partial name="/Views/Shared/_HangmanOneArm.cshtml" />
+}
+
+@if (@ViewBag.roundCap == 2)
+{
+    <partial name="/Views/Shared/_HangmanBothArms.cshtml" />
+}
+
+@if (@ViewBag.roundCap == 1)
+{
+    <partial name="/Views/Shared/_HangmanOneLeg.cshtml" />
+}
+
+
+<div class="centeredHangman">
+    <br />
+    @foreach (char i in Model)
+    {
+        <span>@i</span>
+    }
+
+    <form asp-controller="Hangman" asp-action="HangmanInitialize">
+        <h1>CONGRATS! You won!!</h1>
+        <input type="submit" value="Play again?" />
+    </form>
+</div>
