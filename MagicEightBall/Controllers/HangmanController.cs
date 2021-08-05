@@ -23,34 +23,39 @@ namespace MagicEightBall.Controllers
         public IActionResult HangmanInitialize()
         {
 
-            this.HangmanGameInstance = new Hangman();
+            HangManData.StartNewGame();
+            Console.WriteLine(HangManData.HangmanGameInstance.Answer);
+
             return View();
         }
 
         public IActionResult Hangman(string Input)
         {
+            Console.WriteLine(HangManData.HangmanGameInstance.Answer);
+
+            var gameInstance = HangManData.HangmanGameInstance;
 
             if (Input != null)
             {
-                this.HangmanGameInstance.CheckInput(Input, this.HangmanGameInstance);    
+                HangManData.HangmanGameInstance.CheckInput(Input, HangManData.HangmanGameInstance);
 
-                if (this.HangmanGameInstance.RoundCap == 0)
+                if (HangManData.HangmanGameInstance.RoundCap == 0)
                 {
                     return View("~/Views/Hangman/LoseView.cshtml", HangManData.emptySpaces);
                 }
 
                 else if (!HangManData.emptySpaces.Contains('_'))
                 {
-                    
+
                     return View("~/Views/Hangman/WinView.cshtml", HangManData.emptySpaces);
                 }
             }
-            
-            //HangManData.SetEmptySpaces(newHangman);
-            ViewBag.roundCap = this.HangmanGameInstance.RoundCap;
-            return View(HangManData.emptySpaces);
-            }
 
+            ViewBag.roundCap = HangManData.HangmanGameInstance.RoundCap;
+            return View(HangManData.emptySpaces);
         }
+
+    }
+
     }
 

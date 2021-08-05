@@ -10,9 +10,9 @@ namespace MagicEightBall.Data
     public class HangManData
     {
         public static List<string> answers = new List<string> { "peach", "grape" };
-        public static List<char> emptySpaces = new List<char> { '_', '_', '_', '_', '_' };
+        public static List<char> emptySpaces = new List<char> { };
         public static List<Hangman> ourHangman = new List<Hangman> { };
-
+        public static Hangman HangmanGameInstance { get; set; }
         // = new List<char> {'_', '_', '_', '_', '_'};
 
         public static void Add(char input, Hangman newHangman)
@@ -27,13 +27,10 @@ namespace MagicEightBall.Data
             }
         }
 
-        public static void SetEmptySpaces(int answer)
+        public static void StartNewGame()
         {
-            for (int i = 0; i < answer; i++)
-            {
-
-                emptySpaces.Add('_');
-            }
+            emptySpaces = new List<char> { };
+            HangmanGameInstance = new Hangman();
         }
     }
 }

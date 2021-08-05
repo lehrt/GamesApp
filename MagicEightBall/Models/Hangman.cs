@@ -10,7 +10,7 @@ namespace MagicEightBall.Models
         public string Answer { get; }
         private static int _roundCap = 6;
         public int RoundCap { get; }
-        private bool BeenInitialized { get; set; } = false;
+        //private bool BeenInitialized { get; set; } = false;
 
         //public Hangman()
         //{
@@ -19,17 +19,10 @@ namespace MagicEightBall.Models
 
         public Hangman()
         {
-            if (BeenInitialized == false)
-            {
-                Answer = SetAnswer();
+            Answer = SetAnswer();
 
-            //for (int i = 0; i < Answer.Length; i++)
-            //{
-            //    HangManData.emptySpaces.Add('_');
-            //}
+            SetEmptySpaces();
 
-                BeenInitialized = true;
-            }
             RoundCap = _roundCap;
             //Answer = _answer;
 
@@ -62,5 +55,13 @@ namespace MagicEightBall.Models
             }
         }
 
+        public void SetEmptySpaces()
+        {
+            int answerLength = this.Answer.Length;
+            for (int i = 0; i < answerLength; i++)
+            {
+                HangManData.emptySpaces.Add('_');
+            }
+        }
     }
 }
