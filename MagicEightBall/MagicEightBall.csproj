@@ -14,8 +14,12 @@
     <Folder Include="wwwroot\images\" />
     <Folder Include="Views\Hangman\" />
     <Folder Include="Data\" />
+    <Folder Include="wwwroot\images\hangman\" />
+    <Folder Include="wwwroot\images\eightball\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\images\" />
+    <Content Remove="wwwroot\images\hangman\" />
+    <Content Remove="wwwroot\images\eightball\" />
   </ItemGroup>
 </Project>

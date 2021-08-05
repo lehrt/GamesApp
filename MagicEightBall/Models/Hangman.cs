@@ -8,44 +8,44 @@ namespace MagicEightBall.Models
         //private static Random wordPicker = new Random();
         //private string _answer { get; set; }
         public string Answer { get; set; }
-        //private int _roundCap = 6;
-        public int RoundCap { get; set; } = 6;
+        private static int _roundCap = 6;
+        public int RoundCap { get; }
         private bool BeenInitialized { get; set; } = false;
+
+        //public Hangman()
+        //{
+
+        //}
 
         public Hangman()
         {
-            Random wordPicker = new Random();
-            string thisAnswer = HangManData.answers[wordPicker.Next(HangManData.answers.Count)];
-            this.Answer = thisAnswer;
             if (BeenInitialized == false)
             {
-                //SetAnswer();
+                Answer = SetAnswer();
 
-                //for (int i = 0; i < Answer.Length; i++)
-                //{
-                //    HangManData.emptySpaces.Add('_');
-                //}
+            //for (int i = 0; i < Answer.Length; i++)
+            //{
+            //    HangManData.emptySpaces.Add('_');
+            //}
 
                 BeenInitialized = true;
             }
-            //RoundCap = _roundCap;
+            RoundCap = _roundCap;
             //Answer = _answer;
 
             //HangManData.SetEmptySpaces(Answer.Length);
-
-
         }
 
-        public void SetAnswer()
+        public string SetAnswer()
         {
             Random wordPicker = new Random();
             string thisAnswer = HangManData.answers[wordPicker.Next(HangManData.answers.Count)];
-            this.Answer = thisAnswer;
+            return thisAnswer;
         }
 
         public void DecreaseRoundCap()
         {
-            RoundCap--;
+            --_roundCap;
         }
 
         public void CheckInput(string Input, Hangman newHangman)
